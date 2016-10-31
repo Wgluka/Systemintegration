@@ -1,0 +1,17 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:tns="http://wgluka.com.cn/webservice/"
+targetNamespace="http://wgluka.com.cn/webservice/" elementFormDefault="qualified">
+
+    <xs:complexType name="score">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="score" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--<xs:element name=""-->
+
+
+
+
+</xs:schema>

@@ -1,0 +1,62 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://www.wgluka.com.cn/2048/"
+                  targetNamespace="http://www.wgluka.com.cn/2048/">
+
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:hr="http://www.wgluka.com.cn/2048/"
+                   elementFormDefault="qualified"
+                   targetNamespace="http://www.wgluka.com.cn/2048/">
+            <xs:element name="ScoresRequest"></xs:element>
+            <xs:element name="ScoresResponse">
+                <xs:complexType>
+                    <xs:sequence maxOccurs="unbounded">
+                        <xs:element name="socreResponse" type="hr:ScoreResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="ScoreResponse">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="score" type="xs:integer"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="ScoresRequest">
+        <wsdl:part name="ScoresRequest" element="tns:ScoresRequest"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="ScoresResponse">
+        <wsdl:part name="ScoresResponse" element="tns:ScoresResponse"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="ScoresPort">
+        <wsdl:operation name="Scores">
+            <wsdl:input message="tns:ScoresRequest" name="ScoreRequest"></wsdl:input>
+            <wsdl:output message="tns:ScoresResponse" name="ScoresResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="ScoresPortSoap" type="tns:ScoresPort">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Scores">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="ScoresRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ScoresResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="ScorePortService">
+        <wsdl:port name="ScorePortSoap" binding="tns:ScoresPortSoap">
+            <soap:address location="http://localhost:8080/ScoreService/"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,11 @@
+<soapEnv:Envelope xmlns:soapEnv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:tns="http://www.wgluka.com.cn/2048/">
+    <soapEnv:Header/>
+    <soapEnv:Body>
+        <tns:ScoresRequest>
+
+        </tns:ScoresRequest>
+    </soapEnv:Body>
+
+
+</soapEnv:Envelope>
